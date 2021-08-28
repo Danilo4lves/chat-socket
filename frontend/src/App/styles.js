@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-    body { margin: 0; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    margin: 0;
+    padding-bottom: 3rem;
 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 `;
 
 export const Messages = styled.ul`
@@ -13,6 +15,8 @@ export const Messages = styled.ul`
 
   > li {
     padding: 0.5rem 1rem;
+
+    color: black;
 
     &:nth-child(odd) {
       background-color: #efefef;
