@@ -14,7 +14,7 @@ class MessageService {
 
     const updatedDb = { messages: [...db.messages, data] };
 
-    const stringifiedUpdatedDb = JSON.stringify(updatedDb);
+    const stringifiedUpdatedDb = JSON.stringify(updatedDb, null, 2);
 
     fs.writeFileSync("./data/database.json", stringifiedUpdatedDb);
   }
