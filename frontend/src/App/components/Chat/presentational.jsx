@@ -25,7 +25,9 @@ function Chat(props) {
 
           return (
             <li key={`${user}-${message}`}>
-              <b>{user}:</b> {message}
+              <span>
+                <b>{user}:</b> {message}
+              </span>
             </li>
           );
         })}

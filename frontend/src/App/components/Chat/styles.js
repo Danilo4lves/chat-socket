@@ -1,23 +1,36 @@
 import styled from 'styled-components';
 
+import { chatBackground } from '../../../assets';
+
 export const Container = styled.main`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
   padding-bottom: 3rem;
 `;
 
 export const Messages = styled.ul`
-  margin: 0;
+  flex: 1;
   padding: 0;
 
   list-style-type: none;
+  background-image: url(${chatBackground});
+  background-repeat: repeat;
+  background-position: center;
 
   > li {
-    padding: 0.5rem 1rem;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 8px;
 
-    color: black;
+    > span {
+      padding: 8px 12px;
 
-    &:nth-child(odd) {
-      background-color: #efefef;
+      color: black;
+
+      background-color: #d3d3d3;
+      border-radius: 8px;
     }
   }
 `;
