@@ -1,25 +1,25 @@
 import React from 'react';
-import io from 'socket.io-client';
 
 import AppPresentational from './presentational';
 
 import { StepsEnum } from './enums';
 
-const socket = io.connect('/');
-
 function App() {
   const [currentStep, setCurrentStep] = React.useState(StepsEnum.NAME_FORM);
 
-  function goToChatStep() {
+  const [userName, setUserName] = React.useState('');
+
+  function handleChangeUserName(value) {
+    setUserName(value);
+
     setCurrentStep(StepsEnum.CHAT);
   }
 
   return React.createElement(AppPresentational, {
-    socket,
-
     currentStep,
+    userName,
 
-    goToChatStep,
+    handleChangeUserName,
   });
 }
 

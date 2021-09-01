@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { darken } from 'polished';
+import styled, { css } from 'styled-components';
+import { darken, transparentize } from 'polished';
 
 export const Container = styled.main`
   display: flex;
@@ -47,21 +47,38 @@ export const SubmitButton = styled.button`
   height: 30px;
   margin-top: 16px;
 
-  color: #868b8e;
   font-size: 14px;
   font-weight: 600;
   line-height: 10px;
 
   border-radius: 8px;
-  background-color: #b9b7bd;
-  cursor: pointer;
 
   transition-property: background-color color;
   transition-duration: 0.3s;
 
-  &:hover {
-    color: ${darken(0.15, '#868b8e')};
+  ${({ disabled }) => {
+    if (disabled) {
+      return css`
+        color: ${transparentize(0.3, '#868b8e')};
 
-    background-color: ${darken(0.15, '#b9b7bd')};
-  }
+        background-color: ${transparentize(0.3, '#b9b7bd')};
+
+        cursor: not-allowed;
+      `;
+    }
+
+    return css`
+      color: #868b8e;
+
+      background-color: #b9b7bd;
+
+      cursor: pointer;
+
+      &:hover {
+        color: ${darken(0.15, '#868b8e')};
+
+        background-color: ${darken(0.15, '#b9b7bd')};
+      }
+    `;
+  }};
 `;

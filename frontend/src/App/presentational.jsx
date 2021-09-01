@@ -1,33 +1,22 @@
 import React from 'react';
 
-import { AppContextProvider } from './contexts';
-
 import { NameForm, Chat } from './components';
 
 import { StepsEnum } from './enums';
 
 function AppPresentational(props) {
   const {
-    socket,
-
     currentStep,
+    userName,
 
-    goToChatStep,
+    handleChangeUserName,
   } = props;
 
-  function renderStep() {
-    if (currentStep === StepsEnum.NAME_FORM) {
-      return <NameForm goToChatStep={goToChatStep} />;
-    }
-
-    return <Chat />;
+  if (currentStep === StepsEnum.NAME_FORM) {
+    return <NameForm handleChangeUserName={handleChangeUserName} />;
   }
 
-  return (
-    <AppContextProvider value={{ socket }}>
-      {renderStep()}
-    </AppContextProvider>
-  )
+  return <Chat userName={userName} />;
 }
 
 export default AppPresentational;

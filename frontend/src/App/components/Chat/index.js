@@ -1,14 +1,15 @@
 import React from 'react';
+import io from 'socket.io-client';
 import { useForm } from 'react-hook-form';
 
 import ChatPresentational from './presentational';
 
-import { AppContext } from '../../contexts';
-
 import { MessageService } from '../../../services';
 
-function Chat() {
-  const { socket } = React.useContext(AppContext);
+const socket = io.connect('/');
+
+function Chat(props) {
+  const { userName } = props;
 
   const { register, handleSubmit } = useForm();
 
@@ -38,12 +39,12 @@ function Chat() {
     socket.on('message', (message) => {
       setMessages((prevState) => [...prevState, message]);
     });
-  }, [socket]);
+  }, []);
 
   function onSubmit(values) {
     const { message } = values;
 
-    socket.emit('message', message);
+    socket.emit('message', { user: userName, message });
   }
 
   return React.createElement(ChatPresentational, {

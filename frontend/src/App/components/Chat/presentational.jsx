@@ -20,10 +20,11 @@ function Chat(props) {
 
     return (
       <Messages>
-        {/* TODO: Remove usage of index */}
-        {messages.map((message, index) =>
-          <li key={`${message}-${index}`}>{message}</li>
-        )}
+        {messages.map((item) => {
+          const { user, message } = item;
+
+          return <li key={`${user}-${message}`}>{user}: {message}</li>;
+        })}
       </Messages>
     );
   }

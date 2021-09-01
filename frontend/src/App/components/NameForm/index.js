@@ -1,15 +1,30 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 
 import NameFormPresentational from './presentational';
 
-import { AppContext } from '../../contexts';
-
 function NameForm(props) {
-  const { goToChatStep } = props;
+  const { handleChangeUserName } = props;
 
-  const { socket } = React.useContext(AppContext);
+  const {
+    register,
+    handleSubmit,
+    formState: { isValid: isFormValid }
+  } = useForm({ mode: 'onChange' });
 
-  return React.createElement(NameFormPresentational);
+  function changeName(values) {
+    const { name } = values;
+
+    handleChangeUserName(name);
+  }
+
+  return React.createElement(NameFormPresentational, {
+    register,
+    handleSubmit,
+    isFormValid,
+
+    changeName,
+  });
 }
 
 export default NameForm;

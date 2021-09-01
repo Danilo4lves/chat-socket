@@ -8,14 +8,22 @@ import {
   SubmitButton
 } from './styles';
 
-function NameFormPresentational() {
+function NameFormPresentational(props) {
+  const {
+    register,
+    handleSubmit,
+    isFormValid,
+
+    changeName,
+  } = props;
+
   return (
     <Container>
-      <Form>
+      <Form onSubmit={handleSubmit(changeName)}>
         <Title>Se identifique</Title>
 
-        <NameInput placeholder="Digite seu nome" />
-        <SubmitButton>Confirmar</SubmitButton>
+        <NameInput placeholder="Digite seu nome" {...register('name', { required: true })} />
+        <SubmitButton type="submit" disabled={!isFormValid}>Confirmar</SubmitButton>
       </Form>
     </Container>
   );
