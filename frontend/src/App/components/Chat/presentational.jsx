@@ -23,7 +23,11 @@ function Chat(props) {
         {messages.map((item) => {
           const { user, message } = item;
 
-          return <li key={`${user}-${message}`}>{user}: {message}</li>;
+          return (
+            <li key={`${user}-${message}`}>
+              <b>{user}:</b> {message}
+            </li>
+          );
         })}
       </Messages>
     );
