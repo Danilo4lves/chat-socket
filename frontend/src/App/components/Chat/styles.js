@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.main`
-    margin: 0;
-    padding-bottom: 3rem;
-
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding-bottom: 3rem;
 `;
 
 export const Messages = styled.ul`
