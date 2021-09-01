@@ -2,7 +2,9 @@ import React from 'react';
 
 import { AppContextProvider } from './contexts';
 
-import { Chat } from './components';
+import { NameForm, Chat } from './components';
+
+import { StepsEnum } from './enums';
 
 function AppPresentational(props) {
   const {
@@ -13,9 +15,17 @@ function AppPresentational(props) {
     goToChatStep,
   } = props;
 
+  function renderStep() {
+    if (currentStep === StepsEnum.NAME_FORM) {
+      return <NameForm goToChatStep={goToChatStep} />;
+    }
+
+    return <Chat />;
+  }
+
   return (
     <AppContextProvider value={{ socket }}>
-      <Chat />
+      {renderStep()}
     </AppContextProvider>
   )
 }
